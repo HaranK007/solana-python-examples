@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "solana-python-examples"
+version = "0.1.0"
+description = "Solana examples in Python"  # Consider adding a description
+authors = ["HaranK007 <shreeharan2003@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4"  # Specify Python 3.8 or above
+solana = "^0.34.3"
+solders = "^0.21.0"
+asyncio = "^3.4.3"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.6.8"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]  # It's good to specify a version here
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+# Define the Python version
+target-version = "py38"  
+
+# Specify which checks to enable or disable
+lint.select = ["E", "F"]  # Enable specific error codes
+lint.ignore = ["E501"]         # Ignore specific error codes
+
+# Specify paths to check
+lint.extend-ignore = ["E203"]  # Extend ignored codes
