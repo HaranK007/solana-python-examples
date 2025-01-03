@@ -1,0 +1,14 @@
+{
+    "python.analysis.packageIndexDepths": [
+        {
+            "name": "solders",
+            "depth": 1000,
+            "includeAllSymbols": true
+        },
+        {
+            "name": "solona",
+            "depth": 1000,
+            "includeAllSymbols": true
+        }
+    ]
+}

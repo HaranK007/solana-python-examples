@@ -1,0 +1,985 @@
+{
+    "version": "0.1.0",
+    "name": "mpl_inscription_program",
+    "instructions": [
+      {
+        "name": "Initialize",
+        "accounts": [
+          {
+            "name": "inscriptionAccount",
+            "isMut": true,
+            "isSigner": true,
+            "docs": [
+              "The account where data is stored."
+            ]
+          },
+          {
+            "name": "inscriptionMetadataAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account to store the inscription account's metadata in."
+            ]
+          },
+          {
+            "name": "inscriptionShardAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The shard account for the inscription counter."
+            ]
+          },
+          {
+            "name": "payer",
+            "isMut": true,
+            "isSigner": true,
+            "docs": [
+              "The account that will pay for the rent."
+            ]
+          },
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true,
+            "isOptional": true,
+            "docs": [
+              "The authority of the inscription account."
+            ]
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "System program"
+            ]
+          }
+        ],
+        "args": [],
+        "discriminant": {
+          "type": "u8",
+          "value": 0
+        }
+      },
+      {
+        "name": "InitializeFromMint",
+        "accounts": [
+          {
+            "name": "mintInscriptionAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account where data is stored."
+            ]
+          },
+          {
+            "name": "inscriptionMetadataAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account to store the inscription account's metadata in."
+            ]
+          },
+          {
+            "name": "mintAccount",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "The mint that will be used to derive the PDA."
+            ]
+          },
+          {
+            "name": "tokenMetadataAccount",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "The metadata for the mint."
+            ]
+          },
+          {
+            "name": "inscriptionShardAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The shard account for the inscription counter."
+            ]
+          },
+          {
+            "name": "payer",
+            "isMut": true,
+            "isSigner": true,
+            "docs": [
+              "The account that will pay for the rent."
+            ]
+          },
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true,
+            "isOptional": true,
+            "docs": [
+              "The authority of the inscription account."
+            ]
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "System program"
+            ]
+          }
+        ],
+        "args": [],
+        "discriminant": {
+          "type": "u8",
+          "value": 1
+        }
+      },
+      {
+        "name": "Close",
+        "accounts": [
+          {
+            "name": "inscriptionAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account where data is stored."
+            ]
+          },
+          {
+            "name": "inscriptionMetadataAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account to store the inscription account's metadata in."
+            ]
+          },
+          {
+            "name": "payer",
+            "isMut": true,
+            "isSigner": true,
+            "docs": [
+              "The account that will pay for the rent."
+            ]
+          },
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true,
+            "isOptional": true,
+            "docs": [
+              "The authority of the inscription account."
+            ]
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "System program"
+            ]
+          }
+        ],
+        "args": [
+          {
+            "name": "closeArgs",
+            "type": {
+              "defined": "CloseArgs"
+            }
+          }
+        ],
+        "discriminant": {
+          "type": "u8",
+          "value": 2
+        }
+      },
+      {
+        "name": "WriteData",
+        "accounts": [
+          {
+            "name": "inscriptionAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account where data is stored."
+            ]
+          },
+          {
+            "name": "inscriptionMetadataAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account to store the inscription account's metadata in."
+            ]
+          },
+          {
+            "name": "payer",
+            "isMut": true,
+            "isSigner": true,
+            "docs": [
+              "The account that will pay for the rent."
+            ]
+          },
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true,
+            "isOptional": true,
+            "docs": [
+              "The authority of the inscription account."
+            ]
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "System program"
+            ]
+          }
+        ],
+        "args": [
+          {
+            "name": "writeDataArgs",
+            "type": {
+              "defined": "WriteDataArgs"
+            }
+          }
+        ],
+        "discriminant": {
+          "type": "u8",
+          "value": 3
+        }
+      },
+      {
+        "name": "ClearData",
+        "accounts": [
+          {
+            "name": "inscriptionAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account where data is stored."
+            ]
+          },
+          {
+            "name": "inscriptionMetadataAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account to store the inscription account's metadata in."
+            ]
+          },
+          {
+            "name": "payer",
+            "isMut": true,
+            "isSigner": true,
+            "docs": [
+              "The account that will pay for the rent."
+            ]
+          },
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true,
+            "isOptional": true,
+            "docs": [
+              "The authority of the inscription account."
+            ]
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "System program"
+            ]
+          }
+        ],
+        "args": [
+          {
+            "name": "clearDataArgs",
+            "type": {
+              "defined": "ClearDataArgs"
+            }
+          }
+        ],
+        "discriminant": {
+          "type": "u8",
+          "value": 4
+        }
+      },
+      {
+        "name": "AddAuthority",
+        "accounts": [
+          {
+            "name": "inscriptionMetadataAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account to store the metadata's metadata in."
+            ]
+          },
+          {
+            "name": "payer",
+            "isMut": true,
+            "isSigner": true,
+            "docs": [
+              "The account that will pay for the rent."
+            ]
+          },
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true,
+            "isOptional": true,
+            "docs": [
+              "The authority of the inscription account."
+            ]
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "System program"
+            ]
+          }
+        ],
+        "args": [
+          {
+            "name": "addAuthorityArgs",
+            "type": {
+              "defined": "AddAuthorityArgs"
+            }
+          }
+        ],
+        "discriminant": {
+          "type": "u8",
+          "value": 5
+        }
+      },
+      {
+        "name": "RemoveAuthority",
+        "accounts": [
+          {
+            "name": "inscriptionMetadataAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account to store the metadata's metadata in."
+            ]
+          },
+          {
+            "name": "payer",
+            "isMut": true,
+            "isSigner": true,
+            "docs": [
+              "The account paying for the transaction and rent."
+            ]
+          },
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true,
+            "isOptional": true,
+            "docs": [
+              "The authority of the inscription account to be removed."
+            ]
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "System program"
+            ]
+          }
+        ],
+        "args": [],
+        "discriminant": {
+          "type": "u8",
+          "value": 6
+        }
+      },
+      {
+        "name": "CreateShard",
+        "accounts": [
+          {
+            "name": "shardAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account to store the shard data in."
+            ]
+          },
+          {
+            "name": "payer",
+            "isMut": true,
+            "isSigner": true,
+            "docs": [
+              "The account that will pay for the rent."
+            ]
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "System program"
+            ]
+          }
+        ],
+        "args": [
+          {
+            "name": "createShardArgs",
+            "type": {
+              "defined": "CreateShardArgs"
+            }
+          }
+        ],
+        "discriminant": {
+          "type": "u8",
+          "value": 7
+        }
+      },
+      {
+        "name": "InitializeAssociatedInscription",
+        "accounts": [
+          {
+            "name": "inscriptionAccount",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "The account where data is stored."
+            ]
+          },
+          {
+            "name": "inscriptionMetadataAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account to store the inscription account's metadata in."
+            ]
+          },
+          {
+            "name": "associatedInscriptionAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account to create and store the new associated data in."
+            ]
+          },
+          {
+            "name": "payer",
+            "isMut": true,
+            "isSigner": true,
+            "docs": [
+              "The account that will pay for the rent."
+            ]
+          },
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true,
+            "isOptional": true,
+            "docs": [
+              "The authority of the inscription account."
+            ]
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "System program"
+            ]
+          }
+        ],
+        "args": [
+          {
+            "name": "associateInscriptionAccountArgs",
+            "type": {
+              "defined": "AssociateInscriptionAccountArgs"
+            }
+          }
+        ],
+        "discriminant": {
+          "type": "u8",
+          "value": 8
+        }
+      },
+      {
+        "name": "Allocate",
+        "accounts": [
+          {
+            "name": "inscriptionAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account where data is stored."
+            ]
+          },
+          {
+            "name": "inscriptionMetadataAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account to store the inscription account's metadata in."
+            ]
+          },
+          {
+            "name": "payer",
+            "isMut": true,
+            "isSigner": true,
+            "docs": [
+              "The account that will pay for the rent."
+            ]
+          },
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true,
+            "isOptional": true,
+            "docs": [
+              "The authority of the inscription account."
+            ]
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "System program"
+            ]
+          }
+        ],
+        "args": [
+          {
+            "name": "allocateArgs",
+            "type": {
+              "defined": "AllocateArgs"
+            }
+          }
+        ],
+        "discriminant": {
+          "type": "u8",
+          "value": 9
+        }
+      },
+      {
+        "name": "SetMint",
+        "accounts": [
+          {
+            "name": "mintInscriptionAccount",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "The account where data is stored."
+            ]
+          },
+          {
+            "name": "inscriptionMetadataAccount",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "The account to store the inscription account's metadata in."
+            ]
+          },
+          {
+            "name": "mintAccount",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "The mint that will be used to derive the PDA."
+            ]
+          },
+          {
+            "name": "payer",
+            "isMut": true,
+            "isSigner": true,
+            "docs": [
+              "The account that will pay for the rent."
+            ]
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "System program"
+            ]
+          }
+        ],
+        "args": [],
+        "discriminant": {
+          "type": "u8",
+          "value": 10
+        }
+      }
+    ],
+    "accounts": [
+      {
+        "name": "InscriptionMetadata",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "key",
+              "type": {
+                "defined": "Key"
+              }
+            },
+            {
+              "name": "inscriptionAccount",
+              "type": "publicKey"
+            },
+            {
+              "name": "bump",
+              "type": "u8"
+            },
+            {
+              "name": "dataType",
+              "type": {
+                "defined": "DataType"
+              }
+            },
+            {
+              "name": "inscriptionRank",
+              "type": "u64"
+            },
+            {
+              "name": "inscriptionBump",
+              "type": {
+                "option": "u8"
+              }
+            },
+            {
+              "name": "updateAuthorities",
+              "type": {
+                "vec": "publicKey"
+              }
+            },
+            {
+              "name": "associatedInscriptions",
+              "type": {
+                "vec": {
+                  "defined": "AssociatedInscription"
+                }
+              }
+            },
+            {
+              "name": "mint",
+              "type": {
+                "option": "publicKey"
+              }
+            },
+            {
+              "name": "padding",
+              "type": {
+                "array": [
+                  "u8",
+                  7
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "InscriptionShard",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "key",
+              "type": {
+                "defined": "Key"
+              }
+            },
+            {
+              "name": "bump",
+              "type": "u8"
+            },
+            {
+              "name": "shardNumber",
+              "type": "u8"
+            },
+            {
+              "name": "count",
+              "type": "u64"
+            }
+          ]
+        }
+      }
+    ],
+    "types": [
+      {
+        "name": "CloseArgs",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "associatedTag",
+              "type": {
+                "option": "string"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "WriteDataArgs",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "associatedTag",
+              "type": {
+                "option": "string"
+              }
+            },
+            {
+              "name": "offset",
+              "type": "u64"
+            },
+            {
+              "name": "value",
+              "type": "bytes"
+            }
+          ]
+        }
+      },
+      {
+        "name": "ClearDataArgs",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "associatedTag",
+              "type": {
+                "option": "string"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "AllocateArgs",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "associatedTag",
+              "type": {
+                "option": "string"
+              }
+            },
+            {
+              "name": "targetSize",
+              "type": "u64"
+            }
+          ]
+        }
+      },
+      {
+        "name": "AddAuthorityArgs",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "newAuthority",
+              "type": "publicKey"
+            }
+          ]
+        }
+      },
+      {
+        "name": "CreateShardArgs",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "shardNumber",
+              "type": "u8"
+            }
+          ]
+        }
+      },
+      {
+        "name": "AssociateInscriptionAccountArgs",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "associationTag",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      {
+        "name": "AssociatedInscription",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "tag",
+              "type": "string"
+            },
+            {
+              "name": "bump",
+              "type": "u8"
+            },
+            {
+              "name": "dataType",
+              "type": {
+                "defined": "DataType"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Key",
+        "type": {
+          "kind": "enum",
+          "variants": [
+            {
+              "name": "Uninitialized"
+            },
+            {
+              "name": "InscriptionMetadataAccount"
+            },
+            {
+              "name": "MintInscriptionMetadataAccount"
+            },
+            {
+              "name": "InscriptionShardAccount"
+            }
+          ]
+        }
+      },
+      {
+        "name": "DataType",
+        "type": {
+          "kind": "enum",
+          "variants": [
+            {
+              "name": "Uninitialized"
+            },
+            {
+              "name": "Binary"
+            },
+            {
+              "name": "Json"
+            }
+          ]
+        }
+      }
+    ],
+    "errors": [
+      {
+        "code": 0,
+        "name": "AlreadyInitialized",
+        "msg": "The account has already been initialized"
+      },
+      {
+        "code": 1,
+        "name": "NotInitialized",
+        "msg": "The account has not yet been initialized"
+      },
+      {
+        "code": 2,
+        "name": "DerivedKeyInvalid",
+        "msg": "The key for the account is invalid."
+      },
+      {
+        "code": 3,
+        "name": "InvalidSystemProgram",
+        "msg": "The system program account is invalid."
+      },
+      {
+        "code": 4,
+        "name": "InvalidJson",
+        "msg": "The JSON data is invalid."
+      },
+      {
+        "code": 5,
+        "name": "BorshSerializeError",
+        "msg": "Borsh failed to serialize this account."
+      },
+      {
+        "code": 6,
+        "name": "BorshDeserializeError",
+        "msg": "Borsh failed to deserialize this account."
+      },
+      {
+        "code": 7,
+        "name": "InvalidAuthority",
+        "msg": "The payer does not have authority to perform this action."
+      },
+      {
+        "code": 8,
+        "name": "NumericalOverflow",
+        "msg": "Numerical Overflow"
+      },
+      {
+        "code": 9,
+        "name": "IncorrectOwner",
+        "msg": "Incorrect Owner"
+      },
+      {
+        "code": 10,
+        "name": "MintMismatch",
+        "msg": "Mint Mismatch between Metadata and Mint Accounts."
+      },
+      {
+        "code": 11,
+        "name": "InvalidTokenStandard",
+        "msg": "Must be a NonFungible Token"
+      },
+      {
+        "code": 12,
+        "name": "NotEnoughTokens",
+        "msg": "Not enough tokens in the provided token account."
+      },
+      {
+        "code": 13,
+        "name": "InvalidShardAccount",
+        "msg": "The shard account is invalid."
+      },
+      {
+        "code": 14,
+        "name": "AssociationTagCannotBeBlank",
+        "msg": "The association tag cannot be blank."
+      },
+      {
+        "code": 15,
+        "name": "AssociationTagTooLong",
+        "msg": "The association tag is too long."
+      },
+      {
+        "code": 16,
+        "name": "AuthorityAlreadyExists",
+        "msg": "The authority already exists."
+      },
+      {
+        "code": 17,
+        "name": "RemainingAssociatedInscriptionAccounts",
+        "msg": "Cannot close Inscription accounts until all Associated Inscriptions are closed."
+      },
+      {
+        "code": 18,
+        "name": "InvalidInscriptionMetadataAccount",
+        "msg": "The inscription metadata account is invalid."
+      }
+    ],
+    "metadata": {
+      "origin": "shank",
+      "address": "1NSCRfGeyo7wPUazGbaPBUsTM49e1k2aXewHGARfzSo",
+      "binaryVersion": "0.3.0",
+      "libVersion": "0.3.0"
+    }
+  }
